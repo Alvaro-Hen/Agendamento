@@ -1,0 +1,101 @@
+ @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');  
+
+ :root {
+
+    --text-primary: #333333;
+    --container-background: #8DB7B7;
+    --card-background: #FFFFFF;
+    --input-background: #f0f4f8;
+    --text-placeholder: #999999;
+    --btn-text: #FFFFFF;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+   
+    background-image: 
+        radial-gradient(at 10% 20%, #4e8080 0px, transparent 50%),
+        radial-gradient(at 80% 90%, #b0d0d0 0px, transparent 50%);
+    background-repeat: no-repeat;
+}
+
+
+.login-container {
+
+    height: 600px;
+    width: 962px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--container-background);
+    border-radius: 30px;
+}
+
+.login-card {
+    background-color: var(--card-background);
+    padding: 3rem;
+    border-radius: 25px;
+    width: 380px;
+    text-align: left;
+}
+
+.login-logo {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 2.5rem;
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+}
+
+.input-group label {
+    display: block;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    background-color: var(--input-background);
+    border-radius: 15px; 
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-primary);
+}
+
+.input-group input::placeholder {
+    color: var(--text-placeholder);
+}
+
+
+.btn-login {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 15px;
+    background-color: var(--container-background);
+    color: var(--btn-text);
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}

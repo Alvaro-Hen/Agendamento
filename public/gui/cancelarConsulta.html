@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancelar Consultas</title>
+    <link rel="stylesheet" href="/Style/header.css">
+    <link rel="stylesheet" href="/Style/sidebar.css">
+    <link rel="stylesheet" href="/Style/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+
+    <div class="dashboard-layout">
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+               <a href="home.html"><img src="/img/Logo.png" alt="" height="auto" width="200px"></a>
+                
+            </div>
+            <nav class="sidebar-nav">
+                <a href="home.html"><i class="fas fa-home"></i> Início</a>
+                <a href="/Gui/cadastrarPacientes.html"><i class="fas fa-user-plus"></i> Cadastrar Paciente</a>
+                <a href="/Gui/listarPacientes.html"><i class="fas fa-chart-bar"></i> Listar Pacientes</a>
+                <a href="/Gui/agendarConsulta.html"><i class="fas fa-calendar-plus"></i> Agendar Consulta</a>
+                <a href="/Gui/cancelarConsulta.html" class="active"><i class="fas fa-chart-bar"></i> Cancelar Consulta</a>
+                <a href="/Gui/listarConsultas.html"><i class="fas fa-list-alt"></i> Listar Consultas</a>
+                <a href="/Gui/cadastrarProfissional.html"><i class="fas fa-user-md"></i> Cadastrar Profissional</a>
+                <a href="/Gui/relatorios.html"><i class="fas fa-chart-bar"></i> Gerar Relatórios</a>
+                
+            </nav>
+            <div class="sidebar-footer">
+                <a href="/Gui/login.html"><i class="fas fa-sign-out-alt"></i> Sair</a>
+            </div>
+        </aside>
+        
+        <main class="main-content">
+            <header class="main-header">
+                <div class="pag-info">
+                    <img src="/Logo2.png" alt="">
+                    <h1>Cancelamento de Consulta</h1>
+                </div>
+                
+                <div class="user-info">
+                    <span>Administrador</span>
+                    <i class="fas fa-user-circle"></i>
+                </div>
+            </header>
+
+            <div class="container-cancelamento">
+                <div class="form-container-cancelar">
+                    <form>
+                        <div class="form-grid">
+                            <div class="input-cancelar">
+                                <label for="consulta">Buscar ID da consulta*</label>
+                                <input type="text" id="consulta" placeholder="Digite o ID da consulta" required>
+                            </div>
+
+                            <div class="input-group full-width">
+                                <label for="cancelamento">Motivo do cancelamento</label>
+                                <textarea id="cancelamento" rows="5" placeholder="Digite o motivo do cancelamento"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="button-container-cancelar">
+                            <button type="submit" class="btn-agendar">
+                                <p>Cancelar</p>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+</body>
+</html>

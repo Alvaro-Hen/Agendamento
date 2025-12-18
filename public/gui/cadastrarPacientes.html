@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Pacientes</title>
+    <link rel="stylesheet" href="/Style/header.css">
+    <link rel="stylesheet" href="/Style/sidebar.css">
+    <link rel="stylesheet" href="/Style/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+
+    <div class="dashboard-layout">
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+               <a href="home.html"><img src="/img/Logo.png" alt="" height="auto" width="200px"></a>
+                
+            </div>
+            <nav class="sidebar-nav">
+                <a href="home.html"><i class="fas fa-home"></i> Início</a>
+                <a href="/Gui/cadastrarPacientes.html" class="active"><i class="fas fa-user-plus"></i> Cadastrar Paciente</a>
+                <a href="/Gui/listarPacientes.html"><i class="fas fa-chart-bar"></i> Listar Pacientes</a>
+                <a href="/Gui/agendarConsulta.html"><i class="fas fa-calendar-plus"></i> Agendar Consulta</a>
+                <a href="/Gui/cancelarConsulta.html"><i class="fas fa-chart-bar"></i> Cancelar Consulta</a>
+                <a href="/Gui/listarConsultas.html"><i class="fas fa-list-alt"></i> Listar Consultas</a>
+                <a href="/Gui/cadastrarProfissional.html"><i class="fas fa-user-md"></i> Cadastrar Profissional</a>
+                <a href="/Gui/relatorios.html"><i class="fas fa-chart-bar"></i> Gerar Relatórios</a>
+                
+            </nav>
+            <div class="sidebar-footer">
+                <a href="/Gui/login.html"><i class="fas fa-sign-out-alt"></i> Sair</a>
+            </div>
+        </aside>
+        
+        <div class="main-content">
+            <header class="main-header">
+                <div class="pag-info">
+                    <img src="/Logo2.png" alt="">
+                    <h1>Cadastramento de Pacientes</h1>
+                </div>
+                
+                <div class="user-info">
+                    <span>Administrador</span>
+                    <i class="fas fa-user-circle"></i>
+                </div>
+            </header>
+
+            <main class="main-container">   
+                <form>
+                        <div class="form-grid">
+                            <div class="input-name">
+                                <label for="nome">Nome*</label>
+                                <input type="text" id="nome" placeholder="Digite o nome do paciente" required>
+                            </div>
+
+
+                            <div class="input-group">
+                                <label for="cpf">CPF*</label>
+                                <input type="text" id="cpf" placeholder="000.000.000-00" required>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="data">Data Nascimento*</label>
+                                <div class="input-with-icon">
+                                    <input type="text" id="data" placeholder="DD/MM/AA" required>
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="telefone">Telefone 1*</label>
+                                <input type="text" id="telefone" placeholder="(00) 00000-0000" required>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="telefone">Telefone 2</label>
+                                <input type="text" id="telefone" placeholder="(00) 00000-0000" required>
+                            </div>
+
+                            
+                        </div>
+
+                        <div class="button-container">
+                            <button type="submit" class="btn-agendar">
+                                <i class="fas fa-check"></i>
+                                Cadastrar Paciente
+                            </button>
+                        </div>
+                    </form>
+            </main>
+        </div>
+        
+        
+    </div>
+
+</body>
+</html>

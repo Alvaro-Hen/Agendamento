@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <link rel="stylesheet" href="/Style/sidebar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="/Style/index.css">
+    <link rel="stylesheet" href="/Style/header.css">
+</head>
+
+<body>
+
+    <div class="dashboard-layout">
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <a href="home.html"><img src="/img/Logo.png" alt="" height="auto" width="200px"></a>
+
+            </div>
+            <nav class="sidebar-nav">
+                <a href="home.html" class="active"><i class="fas fa-home"></i> Início</a>
+                <a href="/Gui/cadastrarPacientes.html"><i class="fas fa-user-plus"></i> Cadastrar Paciente</a>
+                <a href="/Gui/listarPacientes.html"><i class="fas fa-chart-bar"></i> Listar Pacientes</a>
+                <a href="/Gui/agendarConsulta.html"><i class="fas fa-calendar-plus"></i> Agendar Consulta</a>
+                <a href="/Gui/cancelarConsulta.html"><i class="fas fa-chart-bar"></i> Cancelar Consulta</a>
+                <a href="/Gui/listarConsultas.html"><i class="fas fa-list-alt"></i> Listar Consultas</a>
+                <a href="/Gui/cadastrarProfissional.html"><i class="fas fa-user-md"></i> Cadastrar Profissional</a>
+                <a href="/"><i class="fas fa-chart-bar"></i> Gerar Relatórios</a>
+
+            </nav>
+            <div class="sidebar-footer">
+                <a href="/Gui/login.html"><i class="fas fa-sign-out-alt"></i> Sair</a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <div class="pag-info">
+                    <img src="/Logo2.png" alt="">
+                    <h1>Painel Principal</h1>
+                </div>
+
+                <div class="user-info">
+                    <span>Administrador</span>
+                    <i class="fas fa-user-circle"></i>
+                </div>
+            </header>
+            
+            <div class="main-container">
+                <div class="barradebusca">
+                    <input type="text-home" name="Barra de busca" placeholder="Digite o CPF do Paciente" id="Buscar">
+
+                    <button class="Botao-buscar"><img src="/img/buscar.png" alt="Icone de lupa"></button>
+
+                </div>
+                <div class="painel">
+                    <section class="listas">
+                        <h2 class="titulo">Médicos do dia</h2>
+                        <ul class="lista-itens">
+                            <li class="item">
+                                <div class="item-icone">
+                                    <img src="/img/image 9.png" alt="Icone de Médico">
+                                </div>
+                                <div class="item-detalhes">
+                                    <strong>Dr Ruan</strong>
+                                    <span>CRM: 12234</span>
+                                    <span>Especialidade: Cardiologista</span>
+                                </div>
+                            </li>
+                            <li class="item">
+                                <div class="item-icone">
+                                    <img src="/img/image 9.png" alt="Icone de Médico">
+                                </div>
+                                <div class="item-detalhes">
+                                    <strong>Dra dra_beatriz</strong>
+                                    <span>CRM: 12234</span>
+                                    <span>Especialidade: Cardiologista</span>
+                                </div>
+                            </li>
+                            <li class="item">
+                                <div class="icone-medico">
+                                    <img src="/img/image 9.png" alt="Icone de Médico">
+                                </div>
+                                <div class="item-detalhes">
+                                    <strong>Dr gabriel</strong>
+                                    <span>CRM: 12234</span>
+                                    <span>Especialidade: Cardiologista</span>
+                                </div>
+                            </li>
+                            <li class="item">
+                                <div class="item-icone">
+                                    <img src="/img/image 9.png" alt="Icone de Médico">
+                                </div>
+                                <div class="item-detalhes">
+                                    <strong>Dr Ruan</strong>
+                                    <span>CRM: 12234</span>
+                                    <span>Especialidade: Cardiologista</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+
+
+                    <section class="listas">
+                        <h2 class="titulo">Pacientes recentes</h2>
+                        <ul class="lista-itens">
+                            <li class="item">
+                                <div class="item-icone"><i class="fas fa-user-injured"></i></div>
+                                <div class="item-detalhes">
+                                    <strong>Alvaro nerd</strong>
+                                    <span>CPF: 122345678</span>
+                                    <span>Idade: 45</span>
+                                </div>
+                            </li>
+                            <li class="item">
+                                <div class="item-icone"><i class="fas fa-user-injured"></i></div>
+                                <div class="item-detalhes">
+                                    <strong>Michael</strong>
+                                    <span>CPF: 122345678</span>
+                                    <span>Idade: 45</span>
+                                </div>
+                            </li>
+                            <li class="item">
+                                <div class="item-icone"><i class="fas fa-user-injured"></i></div>
+                                <div class="item-detalhes">
+                                    <strong>Jorge</strong>
+                                    <span>CPF: 122345678</span>
+                                    <span>Idade: 45</span>
+                                </div>
+                            </li>
+                            <li class="item">
+                                <div class="item-icone"><i class="fas fa-user-injured"></i></div>
+                                <div class="item-detalhes">
+                                    <strong>gabriel</strong>
+                                    <span>CPF: 122345678</span>
+                                    <span>Idade: 45</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+                </div>
+                <section class="consultas">
+                    <h2 class="titulo">Consultas do dia</h2>
+                    <div class="lista-consultas">
+                        <div class="card-consulta">
+                            <div class="card-header">
+                                <span class="card-status status-agendada">Agendada</span>
+                            </div>
+                            <div class="card-detalhes">
+                                <span>id: 1231241</span>
+                                <span>Paciente: <strong>zezin do pao</strong></span>
+                                <span>Medico: <strong>zezin do arroz</strong></span>
+                                <span>Data: <strong>Hoje</strong></span>
+                            </div>
+                        </div>
+                        <div class="card-consulta">
+                            <div class="card-header">
+                                <span class="card-status status-finalizada">Finalizada</span>
+                            </div>
+                            <div class="card-detalhes">
+                                <span>id: 1231241</span>
+                                <span>Paciente: <strong>zezin do pao</strong></span>
+                                <span>Medico: <strong>zezin do arroz</strong></span>
+                                <span>Data: <strong>Hoje</strong></span>
+                            </div>
+                        </div>
+                        <div class="card-consulta">
+                            <div class="card-header">
+                                <span class="card-status status-agendada">Agendada</span>
+                            </div>
+                            <div class="card-detalhes">
+                                <span>id: 1231241</span>
+                                <span>Paciente: <strong>zezin do pao</strong></span>
+                                <span>Medico: <strong>zezin do arroz</strong></span>
+                                <span>Data: <strong>Hoje</strong></span>
+                            </div>
+                        </div>
+                        <div class="card-consulta">
+                            <div class="card-header">
+                                <span class="card-status status-agendada">Agendada</span>
+                            </div>
+                            <div class="card-detalhes">
+                                <span>id: 1231241</span>
+                                <span>Paciente: <strong>zezin do pao</strong></span>
+                                <span>Medico: <strong>zezin do arroz</strong></span>
+                                <span>Data: <strong>Hoje</strong></span>
+                            </div>
+                        </div>
+                        <div class="card-consulta">
+                            <div class="card-header">
+                                <span class="card-status status-cancelada">Cancelada</span>
+                            </div>
+                            <div class="card-detalhes">
+                                <span>id: 1231241</span>
+                                <span>Paciente: <strong>zezin do pao</strong></span>
+                                <span>Medico: <strong>zezin do arroz</strong></span>
+                                <span>Data: <strong>Hoje</strong></span>
+                            </div>
+                        </div>
+                        <div class="card-consulta">
+                            <div class="card-header">
+                                <span class="card-status status-cancelada">Cancelada</span>
+                            </div>
+                            <div class="card-detalhes">
+                                <span>id: 1231241</span>
+                                <span>Paciente: <strong>zezin do pao</strong></span>
+                                <span>Medico: <strong>zezin do arroz</strong></span>
+                                <span>Data: <strong>Hoje</strong></span>
+                            </div>
+                        </div>
+
+                    </div>
+            
+            </section>
+        </div>
+
+    </div>
+
+
+
+    </main>
+    </div>
+
+</body>
+
+</html>
