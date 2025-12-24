@@ -301,15 +301,15 @@ select,
 textarea {
     width: 100%;
     padding: 12px;
-    border: 1px solid #ddd; /* Borda mais clara */
-    border-radius: 8px; /* Cantos arredondados */
+    border: 1px solid #ddd;
+    border-radius: 8px;
     font-size: 16px;
 }
 
 
 .input-with-icon {
     position: relative;
-    display: flex; /* Para alinhar o input e o ícone, se necessário */
+    display: flex;
 }
 
 .input-with-icon .fas.fa-calendar-alt {
@@ -318,7 +318,7 @@ textarea {
     top: 50%;
     transform: translateY(-50%);
     color: #999;
-    pointer-events: none; /* Garante que o clique passe para o input */
+    pointer-events: none; 
     font-size: 18px;
 }
 
@@ -328,7 +328,7 @@ textarea {
     align-items: center;
     gap: 10px;
     padding: 12px 25px;
-    background-color: #007bff; /* Azul primário */
+    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 8px;
