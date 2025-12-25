@@ -22,6 +22,8 @@ body{
     flex-direction: column; 
     align-items: center;   
     padding-top: 40px;
+          /* limita a altura */
+    overflow-y:auto;      /* scroll vertical */
 }
 
 .main-content {
@@ -396,4 +398,30 @@ textarea {
     width: 100%;
     margin-top: 90px;
     padding-left: 35%;
+}
+
+
+/**/
+
+/* Tabela */
+.tabela-pacientes {
+    width: 70vw;
+    height: auto;
+    border-collapse: collapse;
+}
+
+.tabela-pacientes th,
+.tabela-pacientes td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+.tabela-pacientes th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+}
+
+.tabela-pacientes tr:hover {
+    background-color: #f0f8f8;
 }

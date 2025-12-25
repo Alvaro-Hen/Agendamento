@@ -3,15 +3,20 @@ window.addEventListener("load", async () => {
         const resposta = await fetch('/api/pacientes');
         const listaDePacientes = await resposta.json();
         
-        const div = document.getElementById('listarPacientes')
-        const lista = document.createElement("ol")
+        const tbody  = document.getElementById('listarPacientes')
+        tbody.innerHTML = ""; // limpa antes de renderizar
 
-        listaDePacientes.forEach(element => {
-            const elementoLista = document.createElement("li")
-            elementoLista.textContent = `Paciente: ${element.nome}, CPF: ${element.cpf}`
-            lista.appendChild(elementoLista)
+
+        listaDePacientes.forEach((element, index) => {
+            const tr = document.createElement("tr")
+             tr.innerHTML = `
+                <td>${index + 1}</td>
+                <td>${element.nome}</td>
+                <td>${element.cpf}</td>
+            `;
+
+            tbody.appendChild(tr);
         });
-        div.appendChild(lista)
     }catch(erro){
         console.error("Erro ao mostrar elemento na tela ", erro)
     } 
