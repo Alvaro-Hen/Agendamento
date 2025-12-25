@@ -6,9 +6,9 @@ import { listarPacientes } from "./src/routes/listarPacientes.js"
 const app = express()
 
 app.use(express.json())
+app.use(listarPacientes)
 app.use(express.static('public/'))
 app.use(cadastrarPacientes)
-app.use(listarPacientes)
 
 app.get('/', (req, res) => {
     res.sendFile(path.resolve('public/Gui/login.html'));

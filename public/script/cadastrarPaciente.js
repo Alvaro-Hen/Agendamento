@@ -1,6 +1,5 @@
 window.addEventListener("load", main)
 
-
 function main(){
     
     const botao = document.getElementById('btn-agendar')

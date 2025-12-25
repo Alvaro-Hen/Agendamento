@@ -3,7 +3,7 @@ import { dbPromisse } from "../database/database.js";
 
 export const listarPacientes = Router()
 
-listarPacientes.get('/gui/listarPacientes.html', async (req, res) => {
+listarPacientes.get('/api/pacientes', async (req, res) => {
     try{
         const db = await dbPromisse
 
