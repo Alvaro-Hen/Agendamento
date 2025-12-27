@@ -36,8 +36,8 @@ function main(){
         }
         nome.value = ""
         cpf.value = ""
-        dataNasc.value = ""
         tel1.value = ""
         tel2.value = ""
+        dataNasc.value = ""
     });
 }
