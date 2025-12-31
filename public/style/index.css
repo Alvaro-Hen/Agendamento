@@ -405,7 +405,7 @@ textarea {
 
 /* Tabela */
 .tabela-pacientes {
-    width: 70vw;
+    width: 90%;
     height: auto;
     border-collapse: collapse;
 }

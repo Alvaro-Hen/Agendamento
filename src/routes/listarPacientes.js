@@ -7,7 +7,9 @@ listarPacientes.get('/api/pacientes', async (req, res) => {
     try{
         const db = await dbPromisse
 
-        const pacientes = await db.all('SELECT * FROM Pacientes ORDER BY nome COLLATE NOCASE')
+        const pacientes = await db.all('SELECT * FROM Pacientes')
+
+        console.log(pacientes)
 
         return res.status(200).json(pacientes)
     } catch(erro){

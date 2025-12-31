@@ -4,7 +4,7 @@ window.addEventListener("load", async () => {
         const listaDePacientes = await resposta.json();
         
         const tbody  = document.getElementById('listarPacientes')
-        tbody.innerHTML = "";
+        tbody.innerHTML = ""; // limpa antes de renderizar
 
 
         listaDePacientes.forEach((element, index) => {
@@ -13,6 +13,9 @@ window.addEventListener("load", async () => {
                 <td>${index + 1}</td>
                 <td>${element.nome}</td>
                 <td>${element.cpf}</td>
+                <td>${element.dataNasc}</td>
+                <td>${element.tel1}</td>
+                <td>${element.tel2}</td>
             `;
 
             tbody.appendChild(tr);
