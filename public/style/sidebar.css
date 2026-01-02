@@ -74,7 +74,3 @@ body {
 .sidebar-footer { padding: 1.5rem; border-top: 1px solid var(--sidebar-border); }
 .sidebar-footer a { color: var(--sidebar-text); text-decoration: none; display: block; }
 .sidebar-footer a:hover { color: var(--white); }
-
-
-
-

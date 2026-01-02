@@ -4,8 +4,8 @@ function main(){
     
     const botao = document.getElementById('btn-agendar')
     
-    botao.addEventListener('click', async () => {
-        event.preventDefault();
+    botao.addEventListener('click', async (e) => {
+        e.preventDefault();
         const dados = {
             nome: document.getElementById('nome').value,
             cpf: document.getElementById('cpf').value,
