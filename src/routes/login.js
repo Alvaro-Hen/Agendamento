@@ -16,7 +16,6 @@ login.post('/api/login', async (req, res) => {
 
     if(usu.senha === senha){
         const token = Math.random().toString(8)
-        console.log(token)
         await db.run("DELETE FROM TokensAtivos WHERE usuario_id = ?", [usu.id])
         await db.run("INSERT INTO TokensAtivos (token, usuario_id) VALUES (?,?)", [token, usu.id])
         return res.json({token: token})
