@@ -9,7 +9,7 @@ function main(){
     const tel1 = document.getElementById('telefone');
     const tel2 = document.getElementById('telefone2');
     
-    botao.addEventListener('click', async () => {
+    botao.addEventListener('click', async (event) => {
         event.preventDefault();
         const dados = {
             nome: nome.value,
