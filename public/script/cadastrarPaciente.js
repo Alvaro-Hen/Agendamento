@@ -18,12 +18,14 @@ function main(){
             tel1: tel1.value,
             tel2: tel2.value
         };
+        const token = localStorage.getItem('meuToken')
 
         try {
             const resposta = await fetch('http://localhost:3000/gui/cadastrarPacientes', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': token
                 },
                 body: JSON.stringify(dados)
             });

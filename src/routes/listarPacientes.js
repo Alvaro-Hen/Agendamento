@@ -9,8 +9,6 @@ listarPacientes.get('/api/pacientes', async (req, res) => {
 
         const pacientes = await db.all('SELECT * FROM Pacientes')
 
-        console.log(pacientes)
-
         return res.status(200).json(pacientes)
     } catch(erro){
         console.error("Erro ao listar: ", erro)

@@ -3,7 +3,23 @@ import { dbPromisse } from "../database/database.js";
 
 export const cadastrarPacientes = Router()
 
-cadastrarPacientes.post('/gui/cadastrarPacientes', async (req, res) => {
+async function VerificarToken(req, res, next){
+
+    const db = await dbPromisse
+    const tokenRecebido = req.headers['authorization']
+
+    if(!tokenRecebido){
+        return res.status(403).send("Usuario não tem token de acesso")
+    }
+
+    const token = db.get("SELECT usuario_id FROM TokensAtivos WHERE token = ?", [tokenRecebido])
+
+    if(!token){
+        res.status(403).send("Acesso negado, o token não é válido")
+    }
+}
+
+cadastrarPacientes.post('/gui/cadastrarPacientes', VerificarToken, async (req, res) => {
     try{
         const nome = req.body.nome?.trim()
         const cpf = req.body.cpf?.trim()
