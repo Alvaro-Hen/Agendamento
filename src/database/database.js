@@ -17,15 +17,27 @@ async function criarTabela() {
             tel2 TEXT
         );
 
-        CREATE TABLE IF NOT EXISTS Adm(
-            id TEXT PRIMARY KEY,
-            login TEXT,
-            senha TEXT
-        );
-
         CREATE TABLE IF NOT EXISTS TokensAtivos(
             token TEXT PRIMARY KEY,
             usuario_id TEXT
+        );
+        
+        CREATE TABLE IF NOT EXISTS Profissionais(
+            id INTEGER PRIMARY KEY,
+            login TEXT UNIQUE,
+            senha TEXT,
+            cargo TEXT
+        );
+
+        CREATE TABLE IF NOT EXISTS Medicos(
+            id_profissional PRIMARY KEY,
+            rg TEXT,
+            nome TEXT,
+            especialidade TEXT,
+            tel1 TEXT,
+            tel2 TEXT,
+            status TEXT,
+            FOREIGN KEY(id_profissional) REFERENCES Profissionais(id) ON DELETE CASCADE
         );
     `)
 }

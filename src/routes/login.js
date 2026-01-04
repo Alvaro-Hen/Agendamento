@@ -8,12 +8,12 @@ login.post('/api/login', async (req, res) => {
 
     const db = await dbPromisse
 
-    const usu = await db.get('SELECT * FROM Adm WHERE login = ?', [login])
+    const usu = await db.get('SELECT * FROM Profissionais WHERE login = ?', [login])
 
     if(!usu){
         return res.status(401).send('Usuario nao encontrado')
     }
-
+    
     if(usu.senha === senha){
         const token = Math.random().toString(8)
         await db.run("DELETE FROM TokensAtivos WHERE usuario_id = ?", [usu.id])
