@@ -30,7 +30,7 @@ async function criarTabela() {
         );
 
         CREATE TABLE IF NOT EXISTS Medicos(
-            id_profissional PRIMARY KEY,
+            id_profissional INTEGER PRIMARY KEY,
             rg TEXT,
             nome TEXT,
             especialidade TEXT,

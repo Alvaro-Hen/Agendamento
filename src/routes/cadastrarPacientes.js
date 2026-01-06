@@ -4,8 +4,6 @@ import day from "day";
 
 export const cadastrarPacientes = Router()
 
-
-
 cadastrarPacientes.post('/gui/cadastrarPacientes', async (req, res) => {
     try{
         const nome = req.body.nome?.trim()
