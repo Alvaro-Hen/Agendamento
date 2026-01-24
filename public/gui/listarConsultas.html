@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/Style/sidebar.css">
     <link rel="stylesheet" href="/Style/index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="/script/listarConsultas.js" defer></script>
 </head>
 <body>
 
@@ -15,7 +16,6 @@
         <aside class="sidebar">
             <div class="sidebar-logo">
                <a href="home.html"><img src="/img/Logo.png" alt="" height="auto" width="200px"></a>
-                
             </div>
             <nav class="sidebar-nav">
                 <a href="home.html"><i class="fas fa-home"></i> Início</a>
@@ -26,7 +26,6 @@
                 <a href="/Gui/listarConsultas.html"  class="active"><i class="fas fa-list-alt"></i> Listar Consultas</a>
                 <a href="/Gui/Profissionais.html"><i class="fas fa-user-md"></i> Profissionais</a>
                 <a href="/Gui/relatorios.html"><i class="fas fa-chart-bar"></i> Gerar Relatórios</a>
-                
             </nav>
             <div class="sidebar-footer">
                 <a href="/Gui/login.html"><i class="fas fa-sign-out-alt"></i> Sair</a>
@@ -36,8 +35,8 @@
         <main class="main-content">
             <header class="main-header">
                 <div class="pag-info">
-                    <img src="/Logo2.png" alt="">
-                    <h1>Consultas</h1>
+                    <img src="/img/Logo2.png" alt="">
+                    <h1>Consultas Agendadas</h1>
                 </div>
                 
                 <div class="user-info">
@@ -47,9 +46,21 @@
             </header>
             
             <div class="main-container">
-                    
+                <table class="tabela-pacientes">
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Hora</th>
+                            <th>Paciente</th>
+                            <th>Médico</th>
+                            <th>Motivo</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="listarConsultas"> 
+                        </tbody>
+                </table>
             </div>
-           
         </main>
     </div>
 
