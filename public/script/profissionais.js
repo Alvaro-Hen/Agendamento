@@ -1,60 +1,124 @@
 window.addEventListener('load', async () => {
-    const pesquisa = document.getElementById("buscar")
-    const botaoMedico = document.getElementById("medico")
-    const botaoFuncionario = document.getElementById("funcionario")
-    const tabela = document.getElementById('listarPacientes')
-    const pop = document.getElementById("formModal")
-    const popClose = document.getElementById("closeModal")
-    let listaProfissionais = [];
-
-    try{
-        const resposta = await fetch('/api/profissionais');
-        listaProfissionais = await resposta.json();
-        renderizarLista(listaProfissionais)
-    }catch(e){
-        alert('Erro: ' + e)
-    };
-
-    pesquisa.addEventListener('input', (e) => {
-        tabela.innerHTML = "";
-        const listaPesquisa = listaProfissionais.filter(item => {
-            return item.login.toLowerCase().includes(e.target.value.toLowerCase())
-        })
-        renderizarLista(listaPesquisa)
-    });
-
-    botaoMedico.addEventListener("click", () => {
-        pop.showModal()
-    })
-
-    popClose.addEventListener("click", () => {
-        pop.close()
-    })
-
-    pop.addEventListener("click", (e) => {
-        const dialogDimensions = pop.getBoundingClientRect();
-        if (
-            e.clientX < dialogDimensions.left ||
-            e.clientX > dialogDimensions.right ||
-            e.clientY < dialogDimensions.top ||
-            e.clientY > dialogDimensions.bottom
-        ) {
-            pop.close();
-        }
-    })
-
-    function renderizarLista(lista){
-        tabela.innerHTML = "";
-        lista.forEach((element, index) => {
-            const tr = document.createElement('tr')
-            tr.innerHTML = `
-                <td>${index + 1}</td>
-                <td>${element.id}</td>
-                <td>${element.login}</td>
-                <td>${element.cargo}</td>
-            `;
-            tabela.appendChild(tr);
-        });
-    };
+    const tabela = document.getElementById('listarProfissionais'); 
+    const inputBusca = document.getElementById("buscar");
+    const btnAbrirMedico = document.getElementById("medico");
+    const btnAbrirFuncionario = document.getElementById("funcionario");
+    const modal = document.getElementById("formModal");
+    const btnFechar = document.getElementById("closeModal");
+    const form = document.getElementById("formCadastro");
     
-})
+   
+    const labelLogin = document.getElementById('labelLogin') || document.querySelector('label[for="crm"]');
+    const containerEspecialidade = document.getElementById('container-especialidade');
+    
+    let tipoCadastro = ""; 
+
+   
+    async function atualizarTabela() {
+        if(!tabela) return; 
+        try {
+            const resposta = await fetch('/api/profissionais');
+            const lista = await resposta.json();
+            
+            tabela.innerHTML = "";
+            lista.forEach((prof, index) => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${prof.id}</td>
+                    <td>${prof.login}</td> 
+                    <td>${prof.cargo}</td>
+                `;
+                tabela.appendChild(tr);
+            });
+        } catch(e) {
+            console.error(e);
+        }
+    }
+
+  
+    
+    if(btnAbrirMedico) {
+        btnAbrirMedico.addEventListener("click", () => {
+            tipoCadastro = "medico";
+            
+            
+            if(labelLogin) labelLogin.innerText = "CRM (Login)";
+            if(containerEspecialidade) containerEspecialidade.style.display = "block"; 
+            
+            const inputEsp = document.getElementById('especialidade');
+            if(inputEsp) inputEsp.required = true;
+
+            modal.showModal();
+        });
+    }
+
+    if(btnAbrirFuncionario) {
+        btnAbrirFuncionario.addEventListener("click", () => {
+            tipoCadastro = "funcionario";
+            
+            
+            if(labelLogin) labelLogin.innerText = "RG (Login)";
+            if(containerEspecialidade) containerEspecialidade.style.display = "none"; 
+            
+            const inputEsp = document.getElementById('especialidade');
+            if(inputEsp) inputEsp.required = false;
+
+            modal.showModal();
+        });
+    }
+
+    if(btnFechar) {
+        btnFechar.addEventListener("click", () => {
+            modal.close();
+            form.reset();
+        });
+    }
+
+    
+    if(form) {
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const docLogin = document.getElementById('crm').value; 
+            const nome = document.getElementById('nome').value;
+            const tel = document.getElementById('tel1').value;
+            const inputEsp = document.getElementById('especialidade');
+            const especialidade = inputEsp ? inputEsp.value : "";
+
+            let url = "";
+            let dados = {};
+
+            if (tipoCadastro === "medico") {
+                url = "/gui/cadastrarMedico";
+                dados = { nome, tel, crm: docLogin, especialidade };
+            } else {
+                url = "/gui/cadastrarFuncionario";
+                dados = { nome, tel, rg: docLogin };
+            }
+
+            try {
+                const resposta = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(dados)
+                });
+                const resultado = await resposta.json();
+
+                if (resposta.ok) {
+                    alert("Sucesso " + resultado.mensagem);
+                    modal.close();
+                    form.reset();
+                    atualizarTabela();
+                } else {
+                    alert("Erro: " + resultado.erro);
+                }
+            } catch (erro) {
+                console.error(erro);
+                alert("Erro de conexão.");
+            }
+        });
+    }
+
+    await atualizarTabela();
+});

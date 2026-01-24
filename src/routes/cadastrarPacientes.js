@@ -1,6 +1,6 @@
 import { Router } from "express"
 import { dbPromisse } from "../database/database.js";
-import day from "day";
+import dayjs from "dayjs";
 
 export const cadastrarPacientes = Router()
 
