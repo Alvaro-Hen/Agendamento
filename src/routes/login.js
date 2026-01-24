@@ -11,7 +11,7 @@ login.post('/api/login', async (req, res) => {
     const usu = await db.get('SELECT * FROM Profissionais WHERE login = ?', [login])
 
     if(!usu){
-        return res.status(401).send('Usuario nao encontrado')
+        return res.status(401).json({erro: 'Usuario não encontrado'})
     }
     
     if(usu.senha === senha){
@@ -20,6 +20,6 @@ login.post('/api/login', async (req, res) => {
         await db.run("INSERT INTO TokensAtivos (token, usuario_id) VALUES (?,?)", [token, usu.id])
         return res.json({token: token})
     }else{
-        return res.status(401).send('Senha incorreta')
+       return res.status(401).json({ erro: 'Senha incorreta' })
     }
 })

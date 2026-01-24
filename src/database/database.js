@@ -8,7 +8,9 @@ export const dbPromisse = open ({
 
 async function criarTabela() {
     const db = await dbPromisse;
-    db.exec(`
+    await db.run("PRAGMA foreign_keys = ON");
+    
+    await db.exec(`
         CREATE TABLE IF NOT EXISTS Pacientes (
             cpf TEXT PRIMARY KEY, 
             nome TEXT,
@@ -31,13 +33,26 @@ async function criarTabela() {
 
         CREATE TABLE IF NOT EXISTS Medicos(
             id_profissional INTEGER PRIMARY KEY,
-            rg TEXT,
+            crm TEXT TEXT UNIQUE,
             nome TEXT,
             especialidade TEXT,
             tel1 TEXT,
             tel2 TEXT,
             status TEXT,
             FOREIGN KEY(id_profissional) REFERENCES Profissionais(id) ON DELETE CASCADE
+        );
+
+        CREATE TABLE IF NOT EXISTS Consultas (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            paciente_cpf TEXT,
+            medico_id INTEGER,
+            data_consulta TEXT,
+            hora_consulta TEXT,
+            motivo TEXT,
+            observacoes TEXT,
+            status TEXT DEFAULT 'Agendado',
+            FOREIGN KEY (paciente_cpf) REFERENCES Pacientes(cpf),
+            FOREIGN KEY (medico_id) REFERENCES Profissionais(id)
         );
     `)
 }

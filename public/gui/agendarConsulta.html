@@ -48,53 +48,62 @@
             </header>
 
             <div class="main-container">
-                <div class="form-container">
-                    <form>
-                        <div class="form-grid">
-                            <div class="input-group">
-                                <label for="paciente">Buscar Paciente*</label>
-                                <input type="text" id="paciente" placeholder="000.000.000-00" required>
-                            </div>
-
-                            <div class="input-group">
-                                <label for="medico">Buscar Médico*</label>
-                                <select id="medico" required>
-                                    <option value="" disabled selected>Digite o nome do médico</option>
-                                    <option value="dr_gabriel">Dr. Gabriel</option>
-                                    <option value="dra_beatriz">Dra. Beatriz</option>
-                                    <option value="dr_carlos">Dr. Carlos</option>
-                                </select>
-                            </div>
-
-                            <div class="input-group">
-                                <label for="data">Data Agendamento*</label>
-                                <div class="input-with-icon">
-                                    <input type="text" id="data" placeholder="DD/MM/AA" required>
-                                    <i class="fas fa-calendar-alt"></i>
-                                </div>
-                            </div>
-
-                            <div class="input-group">
-                                <label for="motivo">Motivo da consulta*</label>
-                                <input type="text" id="motivo" placeholder="Digite o motivo da consulta" required>
-                            </div>
-
-                            <div class="input-group full-width">
-                                <label for="observacoes">Observações</label>
-                                <textarea id="observacoes" rows="5" placeholder="Digite as observações"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="button-container">
-                            <button type="submit" class="btn-agendar">
-                                <i class="fas fa-check"></i>
-                                Agendar
-                            </button>
-                        </div>
-                    </form>
+                    <div class="form-container">
+        <form>
+            <div class="form-grid">
+                
+                <div class="input-group">
+                    <label for="paciente">CPF do Paciente*</label>
+                    <input type="text" id="paciente" placeholder="000.000.000-00" required maxlength="14">
                     
-
+                    <input type="text" id="nomePaciente" placeholder="Nome do paciente aparecerá aqui..." disabled 
+                        style="margin-top: 5px; background-color: #f0f0f0; border: none; font-weight: bold;">
                 </div>
+
+                <div class="input-group">
+                    <label for="medico">Médico*</label>
+                    <select id="medico" required>
+                        <option value="" disabled selected>Selecione um médico...</option>
+                        </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="data">Data Agendamento*</label>
+                    <div class="input-with-icon">
+                        <input type="date" id="data" required>
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="hora">Horário*</label>
+                    <div class="input-with-icon">
+                        <input type="time" id="hora" required>
+                        <i class="fas fa-clock"></i>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="motivo">Motivo da consulta*</label>
+                    <input type="text" id="motivo" placeholder="Ex: Dor de cabeça" required>
+                </div>
+
+                <div class="input-group full-width">
+                    <label for="observacoes">Observações</label>
+                    <textarea id="observacoes" rows="5" placeholder="Digite as observações"></textarea>
+                </div>
+            </div>
+
+            <div class="button-container">
+                <button type="submit" class="btn-agendar" id="btn-agendar">
+                    <i class="fas fa-check"></i>
+                    Agendar
+                </button>
+            </div>
+        </form>
+    </div>
+
+<script src="/public/script/agendarConsulta.js"></script>
 
             </div>
         </main>
