@@ -33,12 +33,21 @@ async function criarTabela() {
 
         CREATE TABLE IF NOT EXISTS Medicos(
             id_profissional INTEGER PRIMARY KEY,
-            crm TEXT TEXT UNIQUE,
+            crm TEXT UNIQUE, 
             nome TEXT,
             especialidade TEXT,
             tel1 TEXT,
             tel2 TEXT,
             status TEXT,
+            FOREIGN KEY(id_profissional) REFERENCES Profissionais(id) ON DELETE CASCADE
+        );
+
+        
+        CREATE TABLE IF NOT EXISTS Funcionarios (
+            id_profissional INTEGER PRIMARY KEY,
+            nome TEXT,
+            rg TEXT UNIQUE,
+            tel TEXT,
             FOREIGN KEY(id_profissional) REFERENCES Profissionais(id) ON DELETE CASCADE
         );
 
@@ -57,4 +66,4 @@ async function criarTabela() {
     `)
 }
 
-criarTabela().then()
+criarTabela().then(() => console.log("Tabelas criadas com sucesso!"));
