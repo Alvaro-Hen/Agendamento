@@ -51,6 +51,21 @@ cadastrarPacientes.post('/gui/cadastrarPacientes', async (req, res) => {
             data: {nome, cpf}
         })
     } catch(e){
-        return res.status(500).json({ erro: "Erro interno no servidor ao cadastrar paciente." });
+        if (e.message && e.message.includes('UNIQUE constraint failed')) {
+            return res.status(400).json({ erro: "Este CPF já está cadastrado!" });
+        }else{
+        return res.status(500).json({ erro: "Erro interno no servidor ao cadastrar paciente." });}
     }
 })
+
+cadastrarPacientes.get('/api/pacientes', async (req, res) => {
+    try {
+        const db = await dbPromisse;
+        const pacientes = await db.all("SELECT nome, cpf FROM Pacientes");
+        res.json(pacientes);
+    } catch (e) {
+        
+        console.error(e);
+        res.status(500).json({ erro: "Erro ao buscar lista de pacientes" });
+    }
+});

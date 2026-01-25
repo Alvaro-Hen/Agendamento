@@ -2,10 +2,10 @@ window.addEventListener("load", main)
 
 function main(){
     
-    const botao = document.getElementById('btn-agendar')
+    const botao = document.getElementById('btn-cadastrar')
     const nome = document.getElementById('nome');
     const cpf = document.getElementById('cpf');
-    const dataNasc = document.getElementById('data');
+    const dataNasc = document.getElementById('dataNascimento');
     const tel1 = document.getElementById('telefone');
     const tel2 = document.getElementById('telefone2');
     

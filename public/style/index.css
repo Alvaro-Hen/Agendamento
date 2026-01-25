@@ -335,7 +335,7 @@ textarea {
 }
 
 
-.btn-agendar {
+.btn-agendar, .btn-cadastrar {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -455,4 +455,30 @@ dialog form {
   display: flex;
   flex-direction: column;
   gap: 15px;
+}
+
+.lista-flutuante {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    border: 1px solid #ccc;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    display: none; /* Começa escondida */
+    z-index: 10;
+}
+
+.lista-flutuante li {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+}
+
+.lista-flutuante li:hover {
+    background-color: #f0f0f0;
 }
