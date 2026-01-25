@@ -8,11 +8,11 @@ window.addEventListener("load", async () => {
 
 
         listaDeConsultas.forEach((element, index) => {
-            let dataFormatada = element.data.replace(/^(\d{4})-(\d{2})-(\d{2})$/, "$3/$2/$1");
+            let dataFormatada = element.data_consulta.replace(/^(\d{4})-(\d{2})-(\d{2})$/, "$3/$2/$1");
             const tr = document.createElement("tr")
              tr.innerHTML = `
                 <td>${index + 1}</td>
-                <td>${element.dataFormatada} ás ${element.hora}</td>
+                <td>${dataFormatada} ás ${element.hora_consulta}</td>
                 <td>${element.nome_paciente}</td>
                 <td>${element.cpf_paciente}</td>
                 <td>${element.nome_medico}</td>

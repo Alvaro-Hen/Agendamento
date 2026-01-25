@@ -6,6 +6,7 @@ import { login } from "./src/routes/login.js"
 import { profissionais } from "./src/routes/profissionais.js"
 import { home } from "./src/routes/home.js"
 import { agendarConsulta } from "./src/routes/agendarConsulta.js"
+import { listarConsultas } from "./src/routes/listarConsultas.js"
 
 const app = express()
 
@@ -17,6 +18,8 @@ app.use(profissionais)
 app.use(home)
 app.use(cadastrarPacientes)
 app.use(agendarConsulta)
+app.use(listarConsultas)
+
 
 app.get('/', (req, res) => {
     res.sendFile(path.resolve('public/Gui/login.html'));
