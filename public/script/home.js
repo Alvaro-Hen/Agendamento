@@ -33,34 +33,37 @@ window.addEventListener("load", async () => {
         } 
     }
 
-    async function listarMedicosdoDia() {
+async function listarMedicosdoDia() {
+    try {
+        const resposta = await fetch('/api/consultas');
+        const consultas = await resposta.json();
 
-        try {
-            const resposta = await fetch('/api/Profissionais')
-            const listarMedicosdoDia = await resposta.json();
+        const listaM = document.getElementById('listarMedicos');
+        listaM.innerHTML = "";
 
-            const listaM = document.getElementById('listarMedicos')
-            listaM.innerHTML = "";
+        const hoje = dayjs().format('YYYY-MM-DD');
 
-            listarMedicosdoDia.forEach((element,index) => {
-                const li = document.createElement("li")
+        consultas.forEach((element) => {
+            if (element.data_consulta === hoje) {
+                const li = document.createElement("li");
+                
+                li.className = "item"; 
                 li.innerHTML = `
-                <li class="item">
                     <div class="item-icone">
                         <img src="/img/image 9.png" alt="Icone de Médico">
                     </div>
                     <div class="item-detalhes">
-                        <strong>Dr: ${element.login}</strong>
-                        <span>CRM: ${element.senha}</span>
-                        <span>Especialidade: ${element.cargo}</span>
+                        <strong>Dr: ${element.nome_medico}</strong>
+                        <span>CRM: ${element.crm}</span> 
+                        <span>Especialidade: ${element.especialidade}</span>
                     </div>
-                </li>
-
                 `;
                 listaM.appendChild(li);
-            });
-        } catch (error) {
-            console.error("Erro ao mostrar elemento na tela".erro)
-        }
-        
+
+            }
+           
+        });
+    } catch (error) {
+        console.error("Erro ao carregar médicos do dia:", error);
     }
+}

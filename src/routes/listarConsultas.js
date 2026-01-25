@@ -16,7 +16,9 @@ listarConsultas.get('/api/consultas', async (req, res) => {
                 c.status,
                 p.nome AS nome_paciente,
                 p.cpf AS cpf_paciente,    
-                m.nome AS nome_medico
+                m.nome AS nome_medico,
+                m.crm AS crm,
+                m.especialidade AS especialidade
             FROM Consultas c
             JOIN Pacientes p ON c.paciente_cpf = p.cpf
             JOIN Medicos m ON c.medico_id = m.id_profissional
