@@ -1,6 +1,7 @@
 window.addEventListener("load", async () => {
         listarPacientesRecentes();
         listarMedicosdoDia();
+        listarConsultasdoDia();
     })
     
     async function listarPacientesRecentes() {
@@ -33,37 +34,67 @@ window.addEventListener("load", async () => {
         } 
     }
 
-async function listarMedicosdoDia() {
-    try {
-        const resposta = await fetch('/api/consultas');
-        const consultas = await resposta.json();
+    async function listarMedicosdoDia() {
+        try {
+            const resposta = await fetch('/api/consultas');
+            const consultas = await resposta.json();
 
-        const listaM = document.getElementById('listarMedicos');
-        listaM.innerHTML = "";
+            const listaM = document.getElementById('listarMedicos');
+            listaM.innerHTML = "";
 
-        const hoje = dayjs().format('YYYY-MM-DD');
+            const hoje = dayjs().format('YYYY-MM-DD');
 
-        consultas.forEach((element) => {
-            if (element.data_consulta === hoje) {
-                const li = document.createElement("li");
-                
-                li.className = "item"; 
-                li.innerHTML = `
-                    <div class="item-icone">
-                        <img src="/img/image 9.png" alt="Icone de Médico">
-                    </div>
-                    <div class="item-detalhes">
-                        <strong>Dr: ${element.nome_medico}</strong>
-                        <span>CRM: ${element.crm}</span> 
-                        <span>Especialidade: ${element.especialidade}</span>
-                    </div>
-                `;
-                listaM.appendChild(li);
+            consultas.forEach((element) => {
+                if (element.data_consulta === hoje) {
+                    const li = document.createElement("li");
+                    
+                    li.className = "item"; 
+                    li.innerHTML = `
+                        <div class="item-icone">
+                            <img src="/img/image 9.png" alt="Icone de Médico">
+                        </div>
+                        <div class="item-detalhes">
+                            <strong>Dr: ${element.nome_medico}</strong>
+                            <span>CRM: ${element.crm}</span> 
+                            <span>Especialidade: ${element.especialidade}</span>
+                        </div>
+                    `;
+                    listaM.appendChild(li);
 
-            }
-           
-        });
-    } catch (error) {
-        console.error("Erro ao carregar médicos do dia:", error);
+                }
+            
+            });
+        } catch (error) {
+            console.error("Erro ao carregar médicos do dia:", error);
+        }
     }
-}
+
+    async function listarConsultasdoDia() {
+        try{
+            const resposta = await fetch('/api/consultas');
+            const consultas = await resposta.json();
+
+            const listaC = document.getElementById('lista-consultas');
+            const divCartao = document.getElementById('card-detalhes')
+                listaC.innerHTML = "";
+
+                consultas.forEach((element) => {
+                    const li = document.createElement("li");
+                        
+                    li.className = "item"; 
+                    li.innerHTML = `
+                        <div class="item-detalhes">
+                            <strong>ID: ${element.id}</strong>
+                            <span>Status: ${element.status}</span> 
+                            <span>Motivo: ${element.motivo}</span>
+                        </div>
+                    `;
+                    listaC.appendChild(li);
+                    divCartao.appendChild(listaC)
+            });
+        }
+        catch(e){
+            console.log(e)
+        }
+        
+    }

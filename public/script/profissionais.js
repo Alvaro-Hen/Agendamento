@@ -41,7 +41,8 @@ window.addEventListener('load', async () => {
     if(btnAbrirMedico) {
         btnAbrirMedico.addEventListener("click", () => {
             tipoCadastro = "medico";
-            
+            let h2 = document.getElementById('tipo')
+            h2.textContent = 'Cadastro de Médico'
             
             if(labelLogin) labelLogin.innerText = "CRM (Login)";
             if(containerEspecialidade) containerEspecialidade.style.display = "block"; 
@@ -56,9 +57,10 @@ window.addEventListener('load', async () => {
     if(btnAbrirFuncionario) {
         btnAbrirFuncionario.addEventListener("click", () => {
             tipoCadastro = "funcionario";
+            let h2 = document.getElementById('tipo')
+            h2.textContent = 'Cadastro de Recepcionista'
             
-            
-            if(labelLogin) labelLogin.innerText = "RG (Login)";
+            if(labelLogin) labelLogin.innerText = "CPF (Login)";
             if(containerEspecialidade) containerEspecialidade.style.display = "none"; 
             
             const inputEsp = document.getElementById('especialidade');
