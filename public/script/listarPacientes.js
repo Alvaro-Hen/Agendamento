@@ -2,12 +2,18 @@ window.addEventListener("load", async () => {
     try{
         const resposta = await fetch('/api/pacientes');
         const listaDePacientes = await resposta.json();
+        renderizarLista(listaDePacientes)
         
+    }catch(erro){
+        console.error("Erro ao mostrar elemento na tela ", erro)
+    }
+
+    function renderizarLista(lista){
         const tbody  = document.getElementById('listarPacientes')
         tbody.innerHTML = "";
 
 
-        listaDePacientes.forEach((element, index) => {
+        lista.forEach((element, index) => {
             const tr = document.createElement("tr")
              tr.innerHTML = `
                 <td>${index + 1}</td>
@@ -19,7 +25,5 @@ window.addEventListener("load", async () => {
             `;
             tbody.appendChild(tr);
         });
-    }catch(erro){
-        console.error("Erro ao mostrar elemento na tela ", erro)
-    } 
+    }
 })

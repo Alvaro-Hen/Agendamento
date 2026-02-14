@@ -1,34 +1,26 @@
+let listaDePacientesRecentes
+
 window.addEventListener("load", async () => {
         listarPacientesRecentes();
         listarMedicosdoDia();
         listarConsultasdoDia();
-    })
+        const listaAtual = document.getElementById("listarPacientes")
+        const buscar = document.getElementById("Buscar")
+        buscar.addEventListener("input", (e) => {
+            listaAtual.innerHTML = "";
+            const listaPesquisa = listaDePacientesRecentes.filter(item => {
+                return item.cpf.toLowerCase().includes(e.target.value.toLowerCase())
+            })
+            renderizarLista(listaPesquisa)
+        })
+})
     
     async function listarPacientesRecentes() {
-    
+
         try{
             const resposta = await fetch('/api/Pacientes');
-            const listaDePacientesRecentes = await resposta.json();
-            
-            const lista  = document.getElementById('listarPacientes')
-            lista.innerHTML = "";
-
-
-            listaDePacientesRecentes.forEach((element, index) => {
-                const li = document.createElement("li")
-                li.innerHTML = `
-                    <li class="item">
-                        <div class="item-icone"><i class="fas fa-user-injured"></i></div>
-                        <div class="item-detalhes">
-                            <strong>${element.nome}</strong>
-                            <span>CPF: ${element.cpf}</span>
-                            <span>Data de Nascimento: ${element.dataNasc}</span>
-                        </div>
-                    </li>
-        
-                `;
-                lista.appendChild(li);
-            });
+            listaDePacientesRecentes = await resposta.json();
+            renderizarLista(listaDePacientesRecentes)
         }catch(erro){
             console.error("Erro ao mostrar elemento na tela ", erro)
         } 
@@ -98,3 +90,26 @@ window.addEventListener("load", async () => {
         }
         
     }
+
+    function renderizarLista(lista){
+        const listaAtual = document.getElementById("listarPacientes")
+        listaAtual.innerHTML = "";
+
+            lista.forEach((element, index) => {
+                const li = document.createElement("li")
+                li.innerHTML = `
+                    <li class="item">
+                        <div class="item-icone"><i class="fas fa-user-injured"></i></div>
+                        <div class="item-detalhes">
+                            <strong>${element.nome}</strong>
+                            <span>CPF: ${element.cpf}</span>
+                            <span>Data de Nascimento: ${element.dataNasc}</span>
+                        </div>
+                    </li>
+        
+                `;
+                listaAtual.appendChild(li);
+            });
+        
+    };
+    

@@ -1,6 +1,6 @@
 window.addEventListener('load', async () => {
     const tabela = document.getElementById('listarProfissionais'); 
-    const inputBusca = document.getElementById("buscar");
+    const busca = document.getElementById("buscar");
     const btnAbrirMedico = document.getElementById("medico");
     const btnAbrirFuncionario = document.getElementById("funcionario");
     const modal = document.getElementById("formModal");
@@ -14,30 +14,48 @@ window.addEventListener('load', async () => {
     let tipoCadastro = ""; 
 
    
-    async function atualizarTabela() {
-        if(!tabela) return; 
-        try {
-            const resposta = await fetch('/api/profissionais');
-            const lista = await resposta.json();
-            
-            tabela.innerHTML = "";
-            lista.forEach((prof, index) => {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td>${index + 1}</td>
-                    <td>${prof.id}</td>
-                    <td>${prof.login}</td> 
-                    <td>${prof.cargo}</td>
-                `;
-                tabela.appendChild(tr);
-            });
-        } catch(e) {
-            console.error(e);
-        }
-    }
+    try{
+        const resposta = await fetch('/api/profissionais');
+        listaProfissionais = await resposta.json();
+        renderizarLista(listaProfissionais)
+    }catch(e){
+        alert('Erro: ' + e)
+    };
 
-  
+    function renderizarLista(lista){
+        tabela.innerHTML = "";
+        lista.forEach((element, index) => {
+            const tr = document.createElement('tr')
+            tr.innerHTML = `
+                <td>${index + 1}</td>
+                <td>${element.id}</td>
+                <td>${element.login}</td>
+                <td>${element.cargo}</td>
+            `;
+            tabela.appendChild(tr);
+        });
+    };
     
+    busca.addEventListener('input', (e) => {
+        tabela.innerHTML = "";
+        const listaPesquisa = listaProfissionais.filter(item => {
+            return item.login.toLowerCase().includes(e.target.value.toLowerCase())
+        })
+        renderizarLista(listaPesquisa)
+    });
+
+    modal.addEventListener("click", (e) => {
+        const dialogDimensions = modal.getBoundingClientRect();
+        if (
+            e.clientX < dialogDimensions.left ||
+            e.clientX > dialogDimensions.right ||
+            e.clientY < dialogDimensions.top ||
+            e.clientY > dialogDimensions.bottom
+        ) {
+            modal.close();
+        }
+    })
+
     if(btnAbrirMedico) {
         btnAbrirMedico.addEventListener("click", () => {
             tipoCadastro = "medico";
